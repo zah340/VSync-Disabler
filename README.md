@@ -8,13 +8,12 @@ A lightweight Windows tray app that automatically disables VSync for every Minec
 - Watches for Minecraft to close in the background
 - The moment Minecraft closes, it patches `gfx_vsync:0` in every user profile automatically
 - Sends a Windows notification when done
-- Your settings (controls, sensitivity, etc.) save normally — nothing is locked
 
 ## Usage
 
 1. Download `SLOWVSyncDisabler.exe` and run it
 2. It will appear as a **green icon** in your system tray
-3. That's it — just play Minecraft and VSync will be disabled automatically every time you close the game
+3. That's it just play Minecraft and VSync will be disabled automatically every time you close the game
 
 **Right-click the tray icon for options:**
 - `Patch Now` — manually patch all profiles immediately
