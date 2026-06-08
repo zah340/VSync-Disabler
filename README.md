@@ -1,27 +1,32 @@
 # SLOW VSync Disabler
 
-A small Windows utility that disables VSync for every Minecraft Bedrock user profile on the PC.
+A lightweight Windows tray app that automatically disables VSync for every Minecraft Bedrock user profile on the PC.
 
-## What it does
+## How it works
 
-- Closes `Minecraft.Windows.exe` if it is running
-- Scans every profile under `%APPDATA%\Minecraft Bedrock\Users`
-- Sets `gfx_vsync:0` in each profile's `options.txt`
-- Shows a live progress bar and per-user log
+- Runs silently in the system tray (bottom right near the clock)
+- Watches for Minecraft to close in the background
+- The moment Minecraft closes, it patches `gfx_vsync:0` in every user profile automatically
+- Sends a Windows notification when done
+- Your settings (controls, sensitivity, etc.) save normally — nothing is locked
 
 ## Usage
 
-Download `SLOWVSyncDisabler.exe` and run it. No install required.
+1. Download `SLOWVSyncDisabler.exe` and run it
+2. It will appear as a **green icon** in your system tray
+3. That's it — just play Minecraft and VSync will be disabled automatically every time you close the game
 
-Click **Disable VSync** and the tool will handle the rest.
+**Right-click the tray icon for options:**
+- `Patch Now` — manually patch all profiles immediately
+- `Exit` — close the app
 
 ## Building from source
 
-Requires Python 3.x and PyInstaller.
+Requires Python 3.x, PyInstaller, pystray, and Pillow.
 
 ```
-pip install pyinstaller
-python -m PyInstaller --onefile --windowed --name "SLOWVSyncDisabler" vsync_disabler.py
+pip install pyinstaller pystray pillow
+python -m PyInstaller --onefile --windowed --name "SLOWVSyncDisabler" --hidden-import "pystray._win32" vsync_disabler.py
 ```
 
 The exe will be in the `dist/` folder.
